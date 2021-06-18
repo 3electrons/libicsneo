@@ -38,7 +38,8 @@ PCAPDLL::PCAPDLL()
 	}
 #endif
 	dll = LoadLibraryEx(TEXT("wpcap.dll"), nullptr, LOAD_LIBRARY_SEARCH_USER_DIRS);
-
+	if (!dll)  
+		dll = LoadLibrary(TEXT("wpcap.dll"));
 	if (cookie)
 		RemoveDllDirectory(cookie);
 
